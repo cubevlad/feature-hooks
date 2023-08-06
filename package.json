@@ -1,0 +1,23 @@
+{
+  "name": "@frknnice/feature-hooks",
+  "private": false,
+  "version": "1.0.0",
+  "main": "index.ts",
+  "description": "some usefull hooks and utils for react projects",
+  "author": "Vladislav Kubasov",
+  "email": "vladislauskubasov@yandex.ru",
+  "license": "ISC",
+  "scripts": {
+    "test": "nothing you can do here"
+  },
+  "peerDependencies": {
+    "@types/react": ">=18.0.0",
+    "@types/react-dom": ">=18.0.0",
+    "typescript": ">=4.9.3",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "keywords": [
+    "react, hooks"
+  ]
+}
