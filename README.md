@@ -1,4 +1,4 @@
-this repo contains useful react hook (see src/hooks) and some features for optimization
+this repo contains useful react hooks, util functions and some features for optimization
 
 ### Installation
 
