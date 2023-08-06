@@ -7,6 +7,14 @@
   "author": "Vladislav Kubasov",
   "email": "vladislauskubasov@yandex.ru",
   "license": "ISC",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cubevlad/feature-hooks.git"
+  },
+  "homepage": "https://github.com/cubevlad/feature-hooks",
   "scripts": {
     "test": "nothing you can do here"
   },
