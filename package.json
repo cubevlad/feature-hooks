@@ -1,7 +1,7 @@
 {
   "name": "@frknnice/feature-hooks",
   "private": false,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "index.ts",
   "description": "some usefull hooks and utils for react projects",
   "author": "Vladislav Kubasov",
