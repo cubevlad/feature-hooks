@@ -1,15 +1,15 @@
-import { ReactNode, RefObject, createContext, useContext, useEffect, useMemo } from 'react';
 import { LayerManager } from './LayerManager';
 import { useEvent } from '../useEvent';
+import React from 'react';
 
 type UseLayerManagerProps = {
-  elementRef: RefObject<HTMLElement>;
-  triggerRef?: RefObject<HTMLElement>;
+  elementRef: React.RefObject<HTMLElement>;
+  triggerRef?: React.RefObject<HTMLElement>;
   outsideClickEnabled?: boolean;
   onOutsideClick: (event: MouseEvent | TouchEvent) => void;
 };
 
-const LayerContext = createContext<LayerManager | null>(null);
+const LayerContext = React.createContext<LayerManager | null>(null);
 
 export const useLayerManager = ({
   elementRef,
@@ -17,8 +17,8 @@ export const useLayerManager = ({
   outsideClickEnabled,
   triggerRef,
 }: UseLayerManagerProps) => {
-  const parentLayer = useContext(LayerContext);
-  const layer = useMemo(
+  const parentLayer = React.useContext(LayerContext);
+  const layer = React.useMemo(
     () =>
       new LayerManager({
         elementRef,
@@ -27,7 +27,7 @@ export const useLayerManager = ({
     [],
   );
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!parentLayer) {
       return;
     }
@@ -37,7 +37,7 @@ export const useLayerManager = ({
 
   const handleOutsideClick = useEvent(onOutsideClick);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!outsideClickEnabled) {
       return;
     }
@@ -61,7 +61,7 @@ export const useLayerManager = ({
     };
   }, [layer, outsideClickEnabled]);
 
-  const renderLayer = (children: ReactNode) => (
+  const renderLayer = (children: React.ReactNode) => (
     <LayerContext.Provider value={layer}>{children}</LayerContext.Provider>
   );
 

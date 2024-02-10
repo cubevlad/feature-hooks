@@ -1,9 +1,9 @@
-import { useMemo, useState } from 'react';
+import React from "react";
 
 export const useSet = <T>(initialData?: Iterable<T>) => {
   /** set will not reinitialize while rerender  */
-  const [set, _] = useState(() => new Set(initialData));
-  const [size, setSize] = useState(set.size);
+  const [set, _] = React.useState(() => new Set(initialData));
+  const [size, setSize] = React.useState(set.size);
 
   const add = (value: T) => {
     const res = set.add(value);
@@ -34,7 +34,7 @@ export const useSet = <T>(initialData?: Iterable<T>) => {
     return res;
   };
 
-  const componentSet = useMemo(() => {
+  const componentSet = React.useMemo(() => {
     /** after changing size of set object will recalculate */
     return {
       add,

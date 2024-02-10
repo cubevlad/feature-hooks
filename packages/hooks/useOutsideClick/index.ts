@@ -1,10 +1,10 @@
-import { useEffect, type RefObject } from 'react';
+import React from 'react';
 import { useEvent } from '../useEvent';
 
 type UseOutsideClickOptions = {
-  elementRef: RefObject<HTMLElement>;
+  elementRef: React.RefObject<HTMLElement>;
   // we should ignore click on component to prevent trigger on outside click
-  triggerRef?: RefObject<HTMLElement>;
+  triggerRef?: React.RefObject<HTMLElement>;
   onOutsideClick: (e: MouseEvent | TouchEvent) => void;
   enabled?: boolean;
 };
@@ -17,7 +17,7 @@ export const useOutsideClick = ({
 }: UseOutsideClickOptions) => {
   const memoizedEvent = useEvent(onOutsideClick);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (!enabled) {
       return;
     }

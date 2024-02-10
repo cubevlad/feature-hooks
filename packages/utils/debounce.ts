@@ -1,5 +1,5 @@
 export const debounce = <T extends (...args: any[]) => any>(fn: T, ms: number) => {
-  let timeoutId: number | null = null;
+  let timeoutId: number | undefined = undefined;
 
   const debounced = (...args: Parameters<T>) => {
     if (typeof timeoutId === 'number') {
@@ -7,7 +7,7 @@ export const debounce = <T extends (...args: any[]) => any>(fn: T, ms: number) =
     }
 
     timeoutId = setTimeout(() => {
-      timeoutId = null;
+      timeoutId = undefined;
       fn.apply(null, args);
     }, ms);
   };

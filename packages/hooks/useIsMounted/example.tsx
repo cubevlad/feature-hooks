@@ -1,12 +1,12 @@
-import { useEffect, useState } from 'react';
+import React from 'react';
 import { useIsMounted } from '.';
 
-export function IsMountedExample() {
-  const [items, setItems] = useState<any[]>();
+function IsMountedExample() {
+  const [items, setItems] = React.useState<any[]>();
 
   const isMounted = useIsMounted();
 
-  useEffect(() => {
+  React.useEffect(() => {
     fetch('some url here')
       .then((res) => res.json())
       .then((res) => {

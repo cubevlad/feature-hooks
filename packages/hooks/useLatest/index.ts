@@ -1,10 +1,10 @@
-import { useRef, useLayoutEffect } from 'react';
+import React from "react";
 
 export const useLatest = <T>(value: T) => {
-  const ref = useRef(value);
+  const ref = React.useRef(value);
 
   /** sync commit react change to DOM */
-  useLayoutEffect(() => {
+  React.useLayoutEffect(() => {
     ref.current = value;
   });
 

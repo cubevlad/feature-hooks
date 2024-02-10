@@ -1,7 +1,6 @@
 import React from 'react';
-import type { FC, ChangeEvent } from 'react';
 
-import { createOptimizedContext } from './createOptimalContext';
+import { createOptimizedContext } from './index';
 
 type AppContext = {
   value: string;
@@ -13,7 +12,7 @@ const { Provider, useStoreSelector, useStoreUpdate } = createOptimizedContext<Ap
 const FormInput = () => {
   const updateValue = useStoreUpdate();
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     updateValue({
       value: event.target.value,
     });
@@ -22,7 +21,7 @@ const FormInput = () => {
   return <input type='text' onChange={handleChange} />;
 };
 
-const Form: FC = () => {
+const Form: React.FC = () => {
   return (
     <div>
       this is Form
@@ -37,7 +36,7 @@ const CustomInput = () => {
   return <div>{value}</div>;
 };
 
-const App: FC = () => {
+const App: React.FC = () => {
   return (
     <Provider initialState={{ value: '' }}>
       <Form />

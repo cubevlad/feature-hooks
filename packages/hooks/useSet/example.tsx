@@ -1,11 +1,10 @@
 import React from 'react';
-import type { FC } from 'react';
 
-import { useSet } from './useSet';
+import { useSet } from './index';
 
 const EXAMPLE_ITEM = [1, 2, 3, 4, 5];
 
-export const SomeFunctionComponent: FC = () => {
+const SomeFunctionComponent: React.FC = () => {
   const someItemsSet = useSet<number>();
 
   const handleClick = (item: number) => {

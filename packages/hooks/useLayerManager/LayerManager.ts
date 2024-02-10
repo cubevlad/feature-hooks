@@ -1,8 +1,8 @@
-import { RefObject } from 'react';
+import React from "react";
 
 type LayerManagerConstructorProps = {
-  elementRef: RefObject<HTMLElement>;
-  triggerRef?: RefObject<HTMLElement>;
+  elementRef: React.RefObject<HTMLElement>;
+  triggerRef?: React.RefObject<HTMLElement>;
 };
 
 /**
@@ -12,8 +12,8 @@ type LayerManagerConstructorProps = {
  */
 export class LayerManager {
   private children: LayerManager[] = [];
-  private elementRef: RefObject<HTMLElement>;
-  private triggerRef?: RefObject<HTMLElement>;
+  private elementRef: React.RefObject<HTMLElement>;
+  private triggerRef?: React.RefObject<HTMLElement>;
 
   constructor({ elementRef, triggerRef }: LayerManagerConstructorProps) {
     this.elementRef = elementRef;

@@ -1,11 +1,11 @@
-import { useMemo, useState } from 'react';
+import React from "react";
 
 type InitialDataType<T, U> = ReadonlyArray<readonly [T, U]>;
 
 export const useMap = <T, U>(initialData?: InitialDataType<T, U>) => {
   /** map will not reinitialize while rerender  */
-  const [stateMap, _] = useState(() => new Map(initialData));
-  const [size, setSize] = useState(stateMap.size);
+  const [stateMap, _] = React.useState(() => new Map(initialData));
+  const [size, setSize] = React.useState(stateMap.size);
 
   const set = (key: T, value: U) => {
     const res = stateMap.set(key, value);
@@ -36,7 +36,7 @@ export const useMap = <T, U>(initialData?: InitialDataType<T, U>) => {
     return res;
   };
 
-  const componentMap = useMemo(() => {
+  const componentMap = React.useMemo(() => {
     /** after changing size of stateMap object below will recalculate */
     return {
       set,

@@ -1,13 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useMemo,
-  useState,
-  useRef,
-  useLayoutEffect,
-  useEffect,
-} from "react";
-import { type ReactNode } from "react";
+import React from "react";
 
 /** simple store like React.Context */
 class OptimizedContext<T> {
@@ -57,22 +48,22 @@ class OptimizedContext<T> {
 }
 
 export function createOptimizedContext<T>() {
-  const Context = createContext<OptimizedContext<T> | null>(null);
+  const Context = React.createContext<OptimizedContext<T> | null>(null);
 
   const Provider = ({
     children,
     initialState,
   }: {
-    children: ReactNode;
+    children: React.ReactNode;
     initialState: T;
   }) => {
-    const store = useMemo(() => new OptimizedContext(initialState), []);
+    const store = React.useMemo(() => new OptimizedContext(initialState), []);
 
     return <Context.Provider value={store}> {children} </Context.Provider>;
   };
 
   const useStore = () => {
-    const store = useContext(Context);
+    const store = React.useContext(Context);
 
     if (!store) {
       throw new Error("You should wrap this component to Context.Provider");
@@ -89,16 +80,16 @@ export function createOptimizedContext<T>() {
 
   const useStoreSelector = <U,>(selector: (state: T) => U): U => {
     const store = useStore();
-    const [state, setState] = useState(() => selector(store.getState()));
-    const stateRef = useRef(state);
-    const selectorRef = useRef(selector);
+    const [state, setState] = React.useState(() => selector(store.getState()));
+    const stateRef = React.useRef(state);
+    const selectorRef = React.useRef(selector);
 
-    useLayoutEffect(() => {
+    React.useLayoutEffect(() => {
       selectorRef.current = selector;
       stateRef.current = state;
     }, []);
 
-    useEffect(() => {
+    React.useEffect(() => {
       return store.subscribe(() => {
         const currentState = selectorRef.current(store.getState());
 

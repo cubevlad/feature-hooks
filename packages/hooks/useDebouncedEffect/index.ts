@@ -1,14 +1,14 @@
-import { useRef, type DependencyList, type EffectCallback, useEffect } from 'react';
+import React from 'react';
 import { useDebounce } from '../useDebounce';
 
-export const useDebouncedEffect = (cb: EffectCallback, deps: DependencyList, ms: number) => {
-  const cleanUpFn = useRef<(() => void) | void>();
+export const useDebouncedEffect = (cb: React.EffectCallback, deps: React.DependencyList, ms: number) => {
+  const cleanUpFn = React.useRef<(() => void) | void>();
 
   const effectCb = useDebounce(() => {
     cleanUpFn.current = cb();
   }, ms);
 
-  useEffect(() => {
+  React.useEffect(() => {
     effectCb();
 
     return () => {

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React from 'react';
 import { useWindowEvent } from '.';
 
 type Position = {
@@ -15,8 +15,8 @@ const INITIAL_STATE: Position = {
   diffY: 0,
 };
 
-export const Example = () => {
-  const [{ x, y, diffX, diffY }, setMousePosition] = useState(INITIAL_STATE);
+const Example = () => {
+  const [{ x, y, diffX, diffY }, setMousePosition] = React.useState(INITIAL_STATE);
 
   useWindowEvent('mousemove', (event) => {
     const { clientX, clientY } = event;

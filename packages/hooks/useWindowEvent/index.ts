@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import React from 'react';
 import { useLatest } from '../useLatest';
 
 type WindowEvent<T extends string> = T extends keyof WindowEventMap ? WindowEventMap[T] : Event;
@@ -16,7 +16,7 @@ export function useWindowEvent(type: string, callback: (event: Event) => void) {
    * const cb = useEvent(cb)
    */
 
-  useEffect(() => {
+  React.useEffect(() => {
     /** if you are using useEvent - handler no needed */
     const handler = (event: Event) => {
       /** get the updated value from mutable ref.current property */

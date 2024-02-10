@@ -1,9 +1,9 @@
-import { useRef, useCallback } from 'react';
+import React from "react";
 
 export const useResizeObserver = (onResize: ResizeObserverCallback) => {
-  const observerRef = useRef<ResizeObserver | null>(null);
+  const observerRef = React.useRef<ResizeObserver | null>(null);
 
-  const attachResizeObserver = useCallback(
+  const attachResizeObserver = React.useCallback(
     (element: HTMLElement) => {
       const resizeObserver = new ResizeObserver(onResize);
       resizeObserver.observe(element);
@@ -12,11 +12,11 @@ export const useResizeObserver = (onResize: ResizeObserverCallback) => {
     [onResize],
   );
 
-  const detachResizeObserver = useCallback(() => {
+  const detachResizeObserver = React.useCallback(() => {
     observerRef.current?.disconnect();
   }, []);
 
-  const refCb = useCallback(
+  const refCb = React.useCallback(
     (element: HTMLElement | null) => {
       if (element) {
         attachResizeObserver(element);
