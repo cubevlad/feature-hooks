@@ -11,7 +11,6 @@ yarn.lock
 packaje.lock
 
 node_modules
-dist
 dist-ssr
 *.local
 
