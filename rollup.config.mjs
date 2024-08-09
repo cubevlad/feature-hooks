@@ -10,8 +10,6 @@ const packageJson = nodeRequire('./package.json')
 
 const extensions = ['.js', '.jsx', '.ts', '.tsx']
 
-console.log(packageJson)
-
 const config = [
   {
      input: 'index.ts',

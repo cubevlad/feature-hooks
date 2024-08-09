@@ -1,7 +1,7 @@
 {
   "name": "@frknnice/feature-hooks",
   "private": false,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "description": "some usefull hooks and utils for react projects",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cubevlad/feature-hooks.git"
+    "url": "git+https://github.com/cubevlad/feature-hooks.git"
   },
   "homepage": "https://github.com/cubevlad/feature-hooks",
   "scripts": {
