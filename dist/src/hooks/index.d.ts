@@ -13,4 +13,6 @@ export { useResizeObserver } from "./useResizeObserver";
 export { useSet } from "./useSet";
 export { useThrottle } from "./useThrottle";
 export { useWindowEvent } from "./useWindowEvent";
+export { useBoolean } from './useBoolean';
+export { useStatusCallback } from './useStatusCallback';
 //# sourceMappingURL=index.d.ts.map

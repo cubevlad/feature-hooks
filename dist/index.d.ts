@@ -73,6 +73,18 @@ declare const useThrottle: <T extends (...args: any[]) => any>(fn: T) => {
 type WindowEvent<T extends string> = T extends keyof WindowEventMap ? WindowEventMap[T] : Event;
 declare function useWindowEvent<T extends string>(type: T, callback: (event: WindowEvent<T>) => void): void;
 
+declare const useBoolean: (initialValue?: boolean) => {
+    value: boolean;
+    toggle: () => void;
+    setTrue: () => void;
+    setFalse: () => void;
+};
+
+declare const useStatusCallback: <T extends (...args: any[]) => any>(callback: T) => {
+    isPending: boolean;
+    wrappedCallback: (...args: Parameters<T>) => Promise<void>;
+};
+
 type EventName = string;
 type CallbackConstraint = (...args: any[]) => any;
 type EventCallback = {
@@ -105,4 +117,4 @@ declare function tryExecute<T>(value: () => T): T | undefined;
 declare function tryExecute<T, K>(value: Promise<T> | (() => Promise<T>), defaultValue: DefaultValue<K>): Promise<T | K>;
 declare function tryExecute<T>(value: Promise<T> | (() => Promise<T>)): Promise<T | undefined>;
 
-export { EventBus, createOptimizedContext, debounce, throttle, tryExecute, useCustomCompare, useDebounce, useDebouncedEffect, useEvent, useIsMounted, useLatest, useLayerManager, useMap, useOutsideClick, usePrevious, useResizeObserver, useSet, useThrottle, useWindowEvent };
+export { EventBus, createOptimizedContext, debounce, throttle, tryExecute, useBoolean, useCustomCompare, useDebounce, useDebouncedEffect, useEvent, useIsMounted, useLatest, useLayerManager, useMap, useOutsideClick, usePrevious, useResizeObserver, useSet, useStatusCallback, useThrottle, useWindowEvent };

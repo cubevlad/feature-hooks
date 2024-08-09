@@ -470,6 +470,31 @@ function useWindowEvent(type, callback) {
     }, [latestCb]);
 }
 
+const useBoolean = (initialValue = false) => {
+    const [value, setValue] = React.useState(initialValue);
+    const toggle = React.useCallback(() => setValue((prev) => !prev), []);
+    const setTrue = React.useCallback(() => setValue(true), []);
+    const setFalse = React.useCallback(() => setValue(false), []);
+    return React.useMemo(() => ({ value, toggle, setTrue, setFalse }), [value, toggle, setTrue, setFalse]);
+};
+
+const useStatusCallback = (callback) => {
+    const { value: isPending, setTrue: startTransition, setFalse: endTransition } = useBoolean();
+    const wrappedCallback = React.useCallback(async (...args) => {
+        startTransition();
+        try {
+            await callback(...args);
+        }
+        finally {
+            endTransition();
+        }
+    }, [callback, endTransition, startTransition]);
+    return React.useMemo(() => ({
+        isPending,
+        wrappedCallback,
+    }), [wrappedCallback, isPending]);
+};
+
 class EventBus {
     callbacks;
     constructor() {
@@ -520,5 +545,5 @@ class EventBus {
     }
 }
 
-export { EventBus, createOptimizedContext, debounce, throttle, tryExecute, useCustomCompare, useDebounce, useDebouncedEffect, useEvent, useIsMounted, useLatest, useLayerManager, useMap, useOutsideClick, usePrevious, useResizeObserver, useSet, useThrottle, useWindowEvent };
+export { EventBus, createOptimizedContext, debounce, throttle, tryExecute, useBoolean, useCustomCompare, useDebounce, useDebouncedEffect, useEvent, useIsMounted, useLatest, useLayerManager, useMap, useOutsideClick, usePrevious, useResizeObserver, useSet, useStatusCallback, useThrottle, useWindowEvent };
 //# sourceMappingURL=index.esm.js.map
